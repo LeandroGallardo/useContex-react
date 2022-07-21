@@ -1,10 +1,12 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
 
+import { UsersProvider } from './context/UserContext'
+import { Datos } from './components/datos'
+
 function App() {
   const [count, setCount] = useState(0)
-
   function handleClick(){
     setCount((count) => count + 1)
     try {
@@ -14,14 +16,16 @@ function App() {
     }
   }
   return (
-    <div className="App">
-      <h1>holiwi</h1>
-      <div className="card">
-        <button onClick= { handleClick }>
-          count is {count}
-        </button>
+    <UsersProvider>
+      <Datos/>
+      <div className="App">
+        <div className="card">
+          <button onClick= { handleClick }>
+            count is {count}
+          </button>
+        </div>
       </div>
-    </div>
+    </UsersProvider>
   )
 }
 
